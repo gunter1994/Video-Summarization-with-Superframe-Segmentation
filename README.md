@@ -17,7 +17,7 @@ Once that is done make sure you have a few key things to run my code
 
 If you wish to run my demo, you will need my static folder.
 
-Simply download from [here](notyetsetup.com), and place in flask/app so that its flask/app/static. You will also need an additional python library.
+Simply download from [here](https://drive.google.com/file/d/1v0dfi3dqkh4L7lYXfoI3nT-K4l4K9T5p/view?usp=sharing), and place in flask/app so that its flask/app/static. You will also need an additional python library.
 
 - flask
 
