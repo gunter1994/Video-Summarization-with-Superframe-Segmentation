@@ -39,11 +39,17 @@ Any other videos you would like to test just need to be placed inside the videos
 - "process_vid.py"
 
 Generates feature data for just one selected video
+
 - "get_dataset.py"
 
 Generates feature data for every video inside the videos folder
+
 - "get_int.py"
 
 Generates interest ratings at a per frame level, than decides if a frame is selected or not, and saves 1 for yes or 0 for no to "interest.hdf5".
+
+- "demo.py"
+
+Runs a wrapper I build with for SumMes evaluation demo, generates an image displaying F-Measure over every video and comparing it to the human average.
 
 Other files are simply contain helper functions.
