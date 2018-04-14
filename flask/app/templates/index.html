@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<title>Hunter Thompsons Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 5px;
+    height: 25px;
+    background: #800000;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+</style>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-Left">Video Summarization with Superframe Segmentation</span>
+</div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b>Created by - Hunter Thompson</b></h5>
+  </header>
+
+  <header class="w3-container w3-center" style="padding-top:22px">
+    <h5><b>Select Video</b></h5>
+  </header>  
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16 w3-right">
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-container w3-padding-24 w3-center">
+          <select name="videos" id="videos">
+            <option value="12">Jumps</option>
+            <option value="21">St Maarten Landing</option>
+            <option value="13">Kids Playing In Leaves</option>
+            <option value="5">Car Over Camera</option>
+            <option value="15">Paintball</option>
+          </select>
+      </div>
+    </div>
+  </div>
+
+  <header class="w3-container w3-center" style="padding-top:22px">
+    <h5><b>Original Video</b></h5>
+  </header>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16 w3-right">
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-container w3-padding-24 w3-center w3-red">
+        <video controls width='80%' id='orPlayer' name="orPlayer">
+          <source src="static/Jumps/Jumps.ogg" type="video/ogg" id="orVid" name="orVid">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <header class="w3-container w3-center" style="padding-top:22px">
+    <h5><b>Per Frame Analysis</b></h5>
+  </header>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16 w3-right">
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-container w3-padding-24">
+        <input type="range" min="1" max={{length}} value="0" step="1" class="slider" id="myRange" name="myRange">
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16 w3-right">
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-container w3-blue w3-padding-16 w3-center">
+        <img id='img' src='/static/Jumps/frame0.jpg' width='80%'>
+      </div>
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16">
+        <p style="width:25%;display:inline-block;">Motion: 
+          <div class="w3-border" style="width:75%;display:inline-block;vertical-align:text-bottom">
+            <div class="w3-blue" style="height:24px;width:{{motion}}%" id='motion'></div>
+          </div>
+        </p>
+        <p style="width:25%;display:inline-block;">Quality: 
+          <div class="w3-border" style="width:75%;display:inline-block;vertical-align:text-bottom">
+            <div class="w3-blue" style="height:24px;width:{{qual}}%" id='quality'></div>
+          </div>
+        </p>
+        <p style="width:25%;display:inline-block;">Tracking: 
+          <div class="w3-border" style="width:75%;display:inline-block;vertical-align:text-bottom">
+            <div class="w3-blue" style="height:24px;width:{{track}}%" id='tracking'></div>
+          </div>
+        </p>
+        <p style="width:25%;display:inline-block;">Unique: 
+          <div class="w3-border" style="width:75%;display:inline-block;vertical-align:text-bottom">
+            <div class="w3-blue" style="height:24px;width:{{unique}}%" id='unique'></div>
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <header class="w3-container w3-center" style="padding-top:22px">
+    <h5><b>Summarized Video</b></h5>
+  </header>
+
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+      <div class="w3-container w3-padding-16 w3-right">
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-container w3-padding-24 w3-center w3-orange">
+        <video controls id="sumPlayer" name="sumPlayer" width='80%'>
+          <source src="static/Jumps/sum.ogg" type="video/ogg" id="sumVid" name="sumVid">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+    <p id='test'>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <!-- End page content -->
+</div>
+<script src="static/jquery-3.3.1.js"></script>
+<script type=text/javascript>
+$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+$('#myRange').change(function(){
+  $.getJSON($SCRIPT_ROOT + '/_get_frame_info', {
+    i: $('input[name="myRange"]').val()
+  }, function(data) {
+    $("#motion").width(data.motion+'%');
+    $("#quality").width(data.qual+'%');
+    $("#tracking").width(data.track+'%');
+    $("#unique").width(data.unique+'%');
+    $("#img").attr('src',data.img);
+  });
+  return false;
+});
+$('#videos').change(function(){
+  $.getJSON($SCRIPT_ROOT + '/_change_video', {
+    vid: $('#videos').find('option:selected').text(),
+    num: $('#videos').val()
+  }, function(data) {
+    $("#motion").width(data.motion+'%');
+    $("#quality").width(data.qual+'%');
+    $("#tracking").width(data.track+'%');
+    $("#unique").width(data.unique+'%');
+    $("#img").attr('src',data.img);
+    $('input[name="myRange"]').val(0);
+    $("#myRange").attr('max',data.length);
+    $("#orPlayer").find("#orVid").attr('src',data.orVid);
+    $("#orPlayer")[0].load();
+    $("#sumPlayer").find("#sumVid").attr('src',data.sumVid);
+    $("#sumPlayer")[0].load();
+  });
+  return false;
+});
+</script>
+</body>
+</html>
