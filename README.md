@@ -1,4 +1,4 @@
-# Video-Summarization-with-Superframe-Segmentation
+# Video Summarization with Superframe Segmentation
 
 Hi, I'm Hunter Thompson, and welcome to my github!
 
