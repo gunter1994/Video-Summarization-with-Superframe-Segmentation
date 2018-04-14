@@ -17,7 +17,9 @@ Once that is done make sure you have a few key things to run my code
 
 If you wish to run my demo, you will need my static folder.
 
-Simply download from [here](notyetsetup.com), and place in flask/app so that its flask/app/static.
+Simply download from [here](notyetsetup.com), and place in flask/app so that its flask/app/static. You will also need an additional python library.
+
+- flask
 
 ### Creating your own Demo
 - create static folder within flask/app
@@ -26,6 +28,8 @@ Simply download from [here](notyetsetup.com), and place in flask/app so that its
 - Place the video, and summarization inside of the folder
 - Summarization can be generated using "create-vid.py" inside utility
 - using "get-frames.py" (also in utility) extract the frames of the entire video to the folder
+
+You will also need jquery inside of the static folder, just confirm the version number matches mine inside of index.html
 
 ## What to run
 In order to generate feature data, you will need the video dataset for SumMe, you can find everything about them on their [website](https://people.ee.ethz.ch/~gyglim/vsum/)
